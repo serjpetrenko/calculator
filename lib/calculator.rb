@@ -2,8 +2,6 @@
 
 require 'calculator/version'
 require 'base'
-require 'bigdecimal'
-require 'bigdecimal/util'
 
 module Calculator
   class Comission < Base
@@ -11,9 +9,7 @@ module Calculator
     COMISSION_PERCENT = 20
     ONE_HUNDRED_PERCENT = 100.0
 
-    private_constant :COMISSION_AMOUNT
-    private_constant :COMISSION_PERCENT
-    private_constant :ONE_HUNDRED_PERCENT
+    private_constant :COMISSION_AMOUNT, :COMISSION_PERCENT, :ONE_HUNDRED_PERCENT
 
     def initialize(amount:, comission_amount: COMISSION_AMOUNT, comission_percent: COMISSION_PERCENT, comission_entity: nil)
       @amount = amount
@@ -31,11 +27,11 @@ module Calculator
     attr_reader :amount, :comission_percent, :comission_entity
 
     def comission_total
-      amount * comission_percent + comission_amount
+      (amount * comission_percent + comission_amount).floor(2)
     end
 
     def netto_amount
-      amount - comission_total
+      (amount - comission_total).floor(2)
     end
 
     def comission_amount
