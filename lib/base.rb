@@ -3,9 +3,9 @@
 module Calculator
   class Base
     def self.call(*args)
-      service = new(*args)
+      klass = new(*args)
 
-      service.call if service.respond_to?(:call)
+      klass.call if klass.respond_to?(:call)
     end
 
     private
