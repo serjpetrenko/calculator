@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/serjpetrenko/calculator.svg?branch=master)](https://travis-ci.org/serjpetrenko/calculator)
+
 # Calculator
 
 ### Simple way to calculate your comission
