@@ -19,7 +19,7 @@ RSpec.describe Calculator::Comission do
     context 'when comission_amount present' do
       subject { described_class.call(amount: 100, comission_percent: 20, comission_amount: 2.0) }
 
-      it 'calculates comission with comission_amount' do
+      it 'calculates comission with passed comission_amount' do
         expect(subject).to match_array([22.0, 78.0])
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe Calculator::Comission do
     context 'when comission_percent not present' do
       subject { described_class.call(amount: 100, comission_amount: 3.0) }
 
-      it 'calculates comission with comission_amount' do
+      it 'calculates comission with comission_amount with fixed comission_percent' do
         expect(subject).to match_array([23.0, 77.0])
       end
     end
@@ -36,7 +36,7 @@ RSpec.describe Calculator::Comission do
       let(:product) { double(:product, comission_amount: 0.4) }
       subject { described_class.call(amount: 100, comission_entity: product) }
 
-      it 'calculates comission with comission_amount' do
+      it 'calculates comission with passed comission_entity' do
         expect(subject).to match_array([20.39, 79.61])
       end
     end
